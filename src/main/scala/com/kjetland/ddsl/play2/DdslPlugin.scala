@@ -46,7 +46,7 @@ class DdslPlugin(app:play.api.Application) extends Plugin with DdslConfig with P
 
   // Must resolve our serviceLocation
   private def getServiceLocation(): ServiceLocation = {
-    val port = Play.current.configuration.getInt("http.port")
+    val port = Play.current.configuration.getInt("http.port").getOrElse(9000)
     val ip:String = NetUtils.resolveLocalPublicIP()
     //TODO: does not work when mounted on context other than / - ie as war in tomcat etc..
     val url : String = "http://"+ip+":"+port + "/"
