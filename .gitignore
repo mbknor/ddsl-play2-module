@@ -1,0 +1,6 @@
+logs/
+.idea/
+*.iml
+out
+target
+.settings
