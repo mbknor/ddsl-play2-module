@@ -7,7 +7,7 @@ import play.api.Play
 
 object DDSL extends PropsUtils{
 
-  def getDdslPluginInstance() : DdslPlugin = Play.current.plugin(classOf[DdslPlugin]).asInstanceOf[DdslPlugin]
+  def getDdslPluginInstance() : DdslPlugin = Play.current.plugin(classOf[DdslPlugin]).get
 
   def getClient():DdslClient = getDdslPluginInstance().client
 

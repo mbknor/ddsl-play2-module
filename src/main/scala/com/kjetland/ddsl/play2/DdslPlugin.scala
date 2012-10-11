@@ -26,6 +26,7 @@ class DdslPlugin(app:play.api.Application) extends Plugin with DdslConfig with P
     getServiceId() match {
       case Some(sid:ServiceId) => {
         val sl = getServiceLocation()
+        Logger.info("Registering this service as Up. ServiceID: " + sid + " ServiceLocation: " + sl);
         client.serviceUp( new Service(sid, sl))
       }
       case None => {
