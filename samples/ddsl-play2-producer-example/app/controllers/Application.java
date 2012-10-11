@@ -1,5 +1,6 @@
 package controllers;
 
+import com.kjetland.ddsl.utils.NetUtils;
 import play.*;
 import play.mvc.*;
 
@@ -11,7 +12,9 @@ public class Application extends Controller {
       String port = Play.application().configuration().getString("http.port");
       if ( port == null) port = "9000";
 
-    return ok("port: " + port);
+      String ip = NetUtils.resolveLocalPublicIP();
+
+    return ok("Answer from " + ip + ":" + port);
   }
   
 }
