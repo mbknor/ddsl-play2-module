@@ -46,6 +46,9 @@ Broadcasting
 
 If you want your application to automatically be broadcasted to DDSL (using serviceUp()) as long as it is running, you have to add the following to your **conf/application.conf**-file:
 
+    # ddsl.zkhostslist should list all zookeeper nodes in you zookeeper network (comma seperated)
+    ddsl.zkhostslist = localhost:2181
+
 	# If you want to broadcast to DDSL that your app is online when it starts, you have to set ddsl.broadcastservice=true
 	ddsl.broadcastservice=true
 
@@ -73,6 +76,9 @@ Querying
 ------------
 
 If you want to be able to query DDSL for the serviceLocations/URLs of other external services/applications, you have to add this to your **conf/application.conf**-file:
+
+	# ddsl.zkhostslist should list all zookeeper nodes in you zookeeper network (comma seperated)
+    ddsl.zkhostslist = localhost:2181
 
     # Specifies the environment used both when registering your app and when querying for locations
 	ddsl.environment=test
