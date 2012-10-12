@@ -8,7 +8,7 @@ When using [DDSL](https://github.com/mbknor/ddsl) (Dynamic Distributed Service L
 you get your own "dynamic cloud" where you can just launch more instances of your servers to increase the
 overall performance of your own "cloud". Please see [DDSL](https://github.com/mbknor/ddsl) for more info.
 
-DDSL can be used in all java/scala based applications but is a perfect match for your Play Framework application.
+DDSL can be used in all java/scala based applications, but is a perfect match for your Play Framework application.
 
 This is the Play 2.0 module, but you can also find a Play 1.2.x module [here](https://github.com/mbknor/ddsl-playframework-module).
 
@@ -107,6 +107,11 @@ To see what services are online, your can have a look at this:
 * [DDSL-Status](https://github.com/mbknor/ddsl-status), a simple Play 1.2.x-app that is a webapp that shows all online services.
 * [ddsl-cmdline-tool](https://github.com/mbknor/ddsl/tree/master/ddsl-cmdline-tool) - Simple command-line tool to query and excute all DDSL-operations.
 * Create your own app that uses [DdslClient.getAllAvailableServices()](http://mbknor.github.com/ddsl-scaladoc/#com.kjetland.ddsl.DdslClient)
+
+What about the Web frontend - loadbalancer ?
+============
+
+Please see this [post](https://plus.google.com/116342781887978516536/posts/NhUTkq9pFNo) about how to automatically configure nginx, squid, apache or any other reverse proxy/loadbalancer with online services in DDSL.
 
 Samples
 ==============
