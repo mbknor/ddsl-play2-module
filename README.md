@@ -116,6 +116,8 @@ Please see this [post](https://plus.google.com/116342781887978516536/posts/NhUTk
 Samples
 ==============
 
+You have to download [ZooKeeper](https://hadoop.apache.org/zookeeper/) and start it (with all defaults) before you can run the samples.
+
 In the [samples](https://github.com/mbknor/ddsl-play2-module/tree/master/samples)-folder you can find two sample applications. Both applications broadcasts itself to DDSL, but [ddsl-play2-consumer-example](https://github.com/mbknor/ddsl-play2-module/tree/master/samples/ddsl-play2-consumer-example) finds a running [ddsl-play2-producer-example](https://github.com/mbknor/ddsl-play2-module/tree/master/samples/ddsl-play2-producer-example)-server and uses its "API" via lib.WS.
 
 If you want to to start both the producer and the consumer on the same machine, you have to remember to start them using different ports.
