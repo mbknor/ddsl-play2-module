@@ -117,7 +117,7 @@ To see what services are online, your can have a look at this:
 What about the Web frontend - loadbalancer ?
 ============
 
-Please see this [post](https://plus.google.com/116342781887978516536/posts/NhUTkq9pFNo) about how to automatically configure nginx, squid, apache or any other reverse proxy/loadbalancer with online services in DDSL.
+Check out [ddslConfigWriter](https://github.com/mbknor/ddslConfigWriter) which automatically reconfigures nginx (or any other reverse proxy like apache, squid etc)
 
 Samples
 ==============
