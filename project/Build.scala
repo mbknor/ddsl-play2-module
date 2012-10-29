@@ -33,7 +33,7 @@ object DdslPlay2ModuleBuild extends Build {
       "ch.qos.logback"           % "logback-core"      % "1.0.0" % "provided",
       "ch.qos.logback"           % "logback-classic"   % "1.0.0" % "provided",
       "org.scala-lang"           % "scala-library"     % BuildSettings.buildScalaVersion,
-      "com.kjetland"             % "ddsl_2.9.2"        % "0.3.1",
+      "com.kjetland"             % "ddsl_2.9.2"        % "0.3.2",
       "org.apache.zookeeper"     % "zookeeper"         % "3.4.3" intransitive(), // Explicit include here to make it intransitive..
       "joda-time"                % "joda-time"         % "1.6.2",
       "commons-codec"            % "commons-codec"     % "1.4",
@@ -46,7 +46,7 @@ object DdslPlay2ModuleBuild extends Build {
   object BuildSettings {
 
     val buildOrganization = "com.kjetland"
-    val buildVersion      = "1.0"
+    val buildVersion      = "1.1"
     val buildScalaVersion = "2.9.1"
     val buildSbtVersion   = "0.12"
 

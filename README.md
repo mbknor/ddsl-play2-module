@@ -1,6 +1,8 @@
 DDSL module for PlayFramework 2.0
 =============
 
+Current version: 1.1
+
 What is DDSL?
 -------------
 
@@ -28,7 +30,7 @@ To enable the DDSL module in your Play 2.0 application, you have to add it as a 
 
 	    val appDependencies = Seq(
 	      // ****** This the ddsl-play2-module dependency
-	      "com.kjetland" %% "ddsl-play2" % "1.0"
+	      "com.kjetland" %% "ddsl-play2" % "1.1"
 	    )
 
 
