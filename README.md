@@ -80,7 +80,7 @@ Querying
 If you want to be able to query DDSL for the serviceLocations/URLs of other external services/applications, you have to add this to your **conf/application.conf**-file:
 
 	# ddsl.zkhostslist should list all zookeeper nodes in you zookeeper network (comma seperated)
-    ddsl.zkhostslist = localhost:2181
+    ddsl.zkhostslist = "localhost:2181"
 
     # Specifies the environment used both when registering your app and when querying for locations
 	ddsl.environment=test
