@@ -124,7 +124,7 @@ Seeing what is online?
 
 To see what services are online, your can have a look at this:
 
-* [DDSL-Status](https://github.com/mbknor/ddsl-status), a simple Play 1.2.x-app that is a webapp that shows all online services.
+* [DDSL-Status-play2](https://github.com/mbknor/ddsl-status-play2), a simple Play 2-app that is a webapp that shows all online services.
 * [ddsl-cmdline-tool](https://github.com/mbknor/ddsl/tree/master/ddsl-cmdline-tool) - Simple command-line tool to query and excute all DDSL-operations.
 * Create your own app that uses [DdslClient.getAllAvailableServices()](http://mbknor.github.com/ddsl-scaladoc/#com.kjetland.ddsl.DdslClient)
 
