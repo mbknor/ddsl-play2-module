@@ -1,7 +1,13 @@
-DDSL module for PlayFramework 2.0
+DDSL module for PlayFramework 2
 =============
 
-Current version: 1.1
+
+
+Current plugin versions:
+
+* ***1.2*** for Play 2.1
+* 1.1 for Play 2.0.4
+
 
 What is DDSL?
 -------------
@@ -12,16 +18,16 @@ overall performance of your own "cloud". Please see [DDSL](https://github.com/mb
 
 DDSL can be used in all java/scala based applications, but is a perfect match for your Play Framework application.
 
-This is the Play 2.0 module, but you can also find a Play 1.2.x module [here](https://github.com/mbknor/ddsl-playframework-module).
+This is the Play 2 module, but you can also find a Play 1.2.x module [here](https://github.com/mbknor/ddsl-playframework-module).
 
 How to use it in your Play 2 app?
 ==============
 
-To enable the DDSL module in your Play 2.0 application, you have to add it as a dependency. Since DDSL is hosted on my custom repository, you also have to add the url to this repository. Your **project/Build.scala**-file should look something like this:
+To enable the DDSL module in your Play 2 application, you have to add it as a dependency. Since DDSL is hosted on my custom repository, you also have to add the url to this repository. Your **project/Build.scala**-file should look something like this:
 
 	import sbt._
 	import Keys._
-	import PlayProject._
+	import play.Project._
 
 	object ApplicationBuild extends Build {
 
@@ -29,12 +35,13 @@ To enable the DDSL module in your Play 2.0 application, you have to add it as a 
 	    val appVersion      = "1.0-SNAPSHOT"
 
 	    val appDependencies = Seq(
+	      "play"         %% "play-java"  % "2.1.0",
 	      // ****** This the ddsl-play2-module dependency
-	      "com.kjetland" %% "ddsl-play2" % "1.1"
+	      "com.kjetland" %% "ddsl-play2" % "1.2"
 	    )
 
 
-	    val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
+	    val main = play.Project(appName, appVersion, appDependencies).settings(
 	      // ****** Adding the custom repository url
 			resolvers ++= Seq(
 	          "mbknor github Repository" at "http://mbknor.github.com/m2repo/releases/"
@@ -71,7 +78,12 @@ Example
 
 	http://10.0.0.1:9000/
 
-If you are using a different port than 9000, you have to use the -Dhttp.port property. DDSL will not be able to detect your port if you (in dev mode) are starting play on a custom port like this: run 9010 
+If you are using a different port than 9000, you have to use the -Dhttp.port property. DDSL will not be able to detect your port if you (in dev mode) are starting play on a custom port like this: run 9010
+
+To be sure DDSL resolves the **correct url** when using custom HTTP port, start you application like this:
+
+	play stage
+	./target/start -Dhttp.port=9011
 
 
 Querying
@@ -130,7 +142,7 @@ In the [samples](https://github.com/mbknor/ddsl-play2-module/tree/master/samples
 
 If you want to to start both the producer and the consumer on the same machine, you have to remember to start them using different ports.
 
-Due to a limitation in Play 2.0, you cannot start them using "run 9010", since DDSL will not be able to detect that custom port. Instead you have to start them using -Dhttp.port=9010. Play 2.0 does not accept that parameter when running in dev mode, so you have to stage the app, then use **target/start -Dhttp.port=9010** like this:
+Due to a limitation in Play 2, you cannot start them using "run 9010", since DDSL will not be able to detect that custom port. Instead you have to start them using -Dhttp.port=9010. Play 2 does not accept that parameter when running in dev mode, so you have to stage the app, then use **target/start -Dhttp.port=9010** like this:
 
 Stage it:
 

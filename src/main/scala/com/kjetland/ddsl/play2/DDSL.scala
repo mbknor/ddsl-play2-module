@@ -3,11 +3,12 @@ package com.kjetland.ddsl.play2
 
 import com.kjetland.ddsl.DdslClient
 import com.kjetland.ddsl.model.{ServiceRequest, ServiceId, ClientId}
-import play.api.Play
+import play.api.Play.current
+import play.api.Application
 
-object DDSL extends PropsUtils{
+object DDSL /*extends PropsUtils*/{
 
-  def getDdslPluginInstance() : DdslPlugin = Play.current.plugin(classOf[DdslPlugin]).get
+  def getDdslPluginInstance()(implicit app: Application) : DdslPlugin = app.plugin[DdslPlugin].getOrElse(throw new RuntimeException("DdslPlugin is not registered."))
 
   def getClient():DdslClient = getDdslPluginInstance().client
 

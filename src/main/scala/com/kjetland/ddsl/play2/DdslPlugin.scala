@@ -8,7 +8,7 @@ import com.kjetland.ddsl.model.{ServiceId, ServiceLocation, Service}
 import com.kjetland.ddsl.utils.NetUtils
 import org.joda.time.DateTime
 
-class DdslPlugin(app:play.api.Application) extends Plugin with DdslConfig with PropsUtils{
+class DdslPlugin(val app:play.api.Application) extends Plugin with DdslConfig with PropsUtils{
 
   var client:DdslClient = null
   var ddslEnvironment:String = null
@@ -47,7 +47,7 @@ class DdslPlugin(app:play.api.Application) extends Plugin with DdslConfig with P
 
   // Must resolve our serviceLocation
   private def getServiceLocation(): ServiceLocation = {
-    val port = Play.current.configuration.getInt("http.port").getOrElse(9000)
+    val port = app.configuration.getInt("http.port").getOrElse(9000)
     val ip:String = NetUtils.resolveLocalPublicIP()
     //TODO: does not work when mounted on context other than / - ie as war in tomcat etc..
     val url : String = "http://"+ip+":"+port + "/"
@@ -80,7 +80,12 @@ class DdslPlugin(app:play.api.Application) extends Plugin with DdslConfig with P
   }
 
   override def getStaticUrl ( sid:ServiceId ):String = {
-    val key = "ddsl.fallback."+sid.getMapKey
+
+    // sid.getMapKey returns string on the form 'ServiceId(test,http,Play2ExampleServer,1.0)' which is not a valid key
+    // when reading play config proerties, so we have to transform it into:
+    // 'ServiceId.test.http.Play2ExampleServer.1.0'
+    val key = "ddsl.fallback."+sid.getMapKey.replace('(','.').replace(',','.').replace(")","")
+
     Logger.info("Cannot find url via ddsl - looking for fallback url in application.conf with key: " + key)
     val url = getProp(key, null, false)
     if( url == null) throw new RuntimeException("Error resolving fallback url from application.conf with key: " + key)
@@ -93,8 +98,10 @@ class DdslPlugin(app:play.api.Application) extends Plugin with DdslConfig with P
 
 
 trait PropsUtils {
+  def app : play.api.Application
+
   def getProp( name:String, defaultValue:String, mustHave:Boolean) : String = {
-    Play.current.configuration.getString(name).getOrElse( {
+    app.configuration.getString(name).getOrElse( {
       if ( mustHave ) throw new RuntimeException("Needed config property not found in application.conf: " + name)
       return defaultValue
     } )

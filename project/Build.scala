@@ -29,16 +29,18 @@ object DdslPlay2ModuleBuild extends Build {
   object Dependencies {
 
     val runtime = Seq(
-      "play"                    %% "play"              % "2.0.4" % "provided" notTransitive(),
-      "ch.qos.logback"           % "logback-core"      % "1.0.0" % "provided",
-      "ch.qos.logback"           % "logback-classic"   % "1.0.0" % "provided",
+      "play"                    %% "play"              % "2.1.0" % "provided" notTransitive(),
+      "com.typesafe"             % "config"            % "1.0.0",
+      "ch.qos.logback"           % "logback-core"      % "1.0.7" % "provided",
+      "ch.qos.logback"           % "logback-classic"   % "1.0.7" % "provided",
       "org.scala-lang"           % "scala-library"     % BuildSettings.buildScalaVersion,
-      "com.kjetland"             % "ddsl_2.9.2"        % "0.3.2",
+      "com.kjetland"            %% "ddsl"              % "0.3.3",
       "org.apache.zookeeper"     % "zookeeper"         % "3.4.3" intransitive(), // Explicit include here to make it intransitive..
-      "joda-time"                % "joda-time"         % "1.6.2",
+      "joda-time"                % "joda-time"         % "2.1",
+      "org.joda"                 % "joda-convert"      % "1.2",
       "commons-codec"            % "commons-codec"     % "1.4",
-      "org.scalatest"           %% "scalatest"         % "1.8"    % "test",
-      "org.specs2" %% "specs2"   % "1.12.1" % "test"
+      "org.scalatest"           %% "scalatest"         % "1.9.1"  % "test",
+      "org.specs2"              %% "specs2"            % "1.12.3" % "test"
     )
   }
 
@@ -46,9 +48,9 @@ object DdslPlay2ModuleBuild extends Build {
   object BuildSettings {
 
     val buildOrganization = "com.kjetland"
-    val buildVersion      = "1.1"
-    val buildScalaVersion = "2.9.1"
-    val buildSbtVersion   = "0.12"
+    val buildVersion      = "1.2"
+    val buildScalaVersion = "2.10.0"
+    val buildSbtVersion   = "0.12.1"
 
     val buildSettings = Defaults.defaultSettings ++ Seq (
       organization   := buildOrganization,
