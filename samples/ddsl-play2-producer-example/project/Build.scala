@@ -9,7 +9,7 @@ object ApplicationBuild extends Build {
 
     val appDependencies = Seq(
       "com.typesafe.play"   %% "play-java"  % "2.2.2",
-      "com.kjetland" %% "ddsl-play2" % "1.3-SNAPSHOT"
+      "com.kjetland" %% "ddsl-play2" % "1.3"
     )
 
 
