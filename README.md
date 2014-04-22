@@ -5,7 +5,8 @@ DDSL module for PlayFramework 2
 
 Current plugin versions:
 
-* ***1.2*** for Play 2.1
+* ***1.3*** for Play 2.2.2
+* 1.2 for Play 2.1
 * 1.1 for Play 2.0.4
 
 
@@ -35,9 +36,9 @@ To enable the DDSL module in your Play 2 application, you have to add it as a de
 	    val appVersion      = "1.0-SNAPSHOT"
 
 	    val appDependencies = Seq(
-	      "play"         %% "play-java"  % "2.1.0",
+	      "com.typesafe.play"  %% "play-java"  % "2.2.2",
 	      // ****** This the ddsl-play2-module dependency
-	      "com.kjetland" %% "ddsl-play2" % "1.2"
+	      "com.kjetland" %% "ddsl-play2" % "1.3"
 	    )
 
 
